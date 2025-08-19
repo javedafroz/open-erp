@@ -1,0 +1,10 @@
+export declare const isValidEmail: (email: string) => boolean;
+export declare const isValidPassword: (password: string) => boolean;
+export declare const isValidUsername: (username: string) => boolean;
+export declare const isValidPhoneNumber: (phone: string) => boolean;
+export declare const isValidUrl: (url: string) => boolean;
+export declare const sanitizeInput: (input: string) => string;
+export declare const validateRequired: (value: any, fieldName: string) => string | null;
+export declare const validateMinLength: (value: string, minLength: number, fieldName: string) => string | null;
+export declare const validateMaxLength: (value: string, maxLength: number, fieldName: string) => string | null;
+//# sourceMappingURL=validation.d.ts.map

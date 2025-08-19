@@ -1,0 +1,88 @@
+{
+  "rabbit_version": "3.12.0",
+  "rabbitmq_version": "3.12.0",
+  "product_name": "RabbitMQ",
+  "product_version": "3.12.0",
+  "users": [
+    {
+      "name": "erp_user",
+      "password_hash": "hKD/kMLs1Kh4x+zON+wkMeXR9ZQ=",
+      "hashing_algorithm": "rabbit_password_hashing_sha256",
+      "tags": "administrator"
+    }
+  ],
+  "vhosts": [
+    {
+      "name": "/",
+      "description": "Default virtual host"
+    }
+  ],
+  "permissions": [
+    {
+      "user": "erp_user",
+      "vhost": "/",
+      "configure": ".*",
+      "write": ".*",
+      "read": ".*"
+    }
+  ],
+  "exchanges": [
+    {
+      "name": "erp.notifications",
+      "type": "topic",
+      "durable": true,
+      "auto_delete": false,
+      "vhost": "/"
+    },
+    {
+      "name": "erp.events",
+      "type": "fanout",
+      "durable": true,
+      "auto_delete": false,
+      "vhost": "/"
+    }
+  ],
+  "queues": [
+    {
+      "name": "email.notifications",
+      "durable": true,
+      "auto_delete": false,
+      "vhost": "/"
+    },
+    {
+      "name": "push.notifications",
+      "durable": true,
+      "auto_delete": false,
+      "vhost": "/"
+    },
+    {
+      "name": "audit.events",
+      "durable": true,
+      "auto_delete": false,
+      "vhost": "/"
+    }
+  ],
+  "bindings": [
+    {
+      "source": "erp.notifications",
+      "destination": "email.notifications",
+      "destination_type": "queue",
+      "routing_key": "notification.email.*",
+      "vhost": "/"
+    },
+    {
+      "source": "erp.notifications",
+      "destination": "push.notifications",
+      "destination_type": "queue",
+      "routing_key": "notification.push.*",
+      "vhost": "/"
+    },
+    {
+      "source": "erp.events",
+      "destination": "audit.events",
+      "destination_type": "queue",
+      "routing_key": "",
+      "vhost": "/"
+    }
+  ]
+}

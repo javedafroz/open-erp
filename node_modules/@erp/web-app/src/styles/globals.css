@@ -1,0 +1,271 @@
+@import 'tailwindcss/base';
+@import 'tailwindcss/components';
+@import 'tailwindcss/utilities';
+
+@layer base {
+  * {
+    @apply border-border;
+  }
+  
+  body {
+    @apply bg-background text-foreground;
+  }
+  
+  html {
+    font-feature-settings: 'cv11', 'ss01';
+    font-variation-settings: 'opsz' 32;
+    scroll-behavior: smooth;
+  }
+}
+
+@layer components {
+  /* Button Components */
+  .btn {
+    @apply inline-flex items-center justify-center rounded-md text-sm font-medium transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 disabled:opacity-50 disabled:pointer-events-none ring-offset-background;
+  }
+  
+  .btn-primary {
+    @apply btn bg-primary-600 text-white hover:bg-primary-700 active:bg-primary-800;
+  }
+  
+  .btn-secondary {
+    @apply btn bg-secondary-100 text-secondary-900 hover:bg-secondary-200 active:bg-secondary-300;
+  }
+  
+  .btn-success {
+    @apply btn bg-success-600 text-white hover:bg-success-700 active:bg-success-800;
+  }
+  
+  .btn-danger {
+    @apply btn bg-danger-600 text-white hover:bg-danger-700 active:bg-danger-800;
+  }
+  
+  .btn-outline {
+    @apply btn border border-input bg-transparent hover:bg-accent hover:text-accent-foreground;
+  }
+  
+  .btn-ghost {
+    @apply btn hover:bg-accent hover:text-accent-foreground;
+  }
+  
+  .btn-sm {
+    @apply h-8 px-3 text-xs;
+  }
+  
+  .btn-md {
+    @apply h-10 px-4 py-2;
+  }
+  
+  .btn-lg {
+    @apply h-11 px-8;
+  }
+  
+  /* Form Components */
+  .form-input {
+    @apply flex h-10 w-full rounded-md border border-input bg-transparent px-3 py-2 text-sm ring-offset-background file:border-0 file:bg-transparent file:text-sm file:font-medium placeholder:text-muted-foreground focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 disabled:cursor-not-allowed disabled:opacity-50;
+  }
+  
+  .form-textarea {
+    @apply flex min-h-[80px] w-full rounded-md border border-input bg-transparent px-3 py-2 text-sm ring-offset-background placeholder:text-muted-foreground focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 disabled:cursor-not-allowed disabled:opacity-50;
+  }
+  
+  .form-select {
+    @apply flex h-10 w-full items-center justify-between rounded-md border border-input bg-transparent px-3 py-2 text-sm ring-offset-background placeholder:text-muted-foreground focus:outline-none focus:ring-2 focus:ring-ring focus:ring-offset-2 disabled:cursor-not-allowed disabled:opacity-50;
+  }
+  
+  .form-label {
+    @apply text-sm font-medium leading-none peer-disabled:cursor-not-allowed peer-disabled:opacity-70;
+  }
+  
+  .form-error {
+    @apply text-sm font-medium text-destructive;
+  }
+  
+  /* Card Components */
+  .card {
+    @apply rounded-lg border bg-card text-card-foreground shadow-sm;
+  }
+  
+  .card-header {
+    @apply flex flex-col space-y-1.5 p-6;
+  }
+  
+  .card-content {
+    @apply p-6 pt-0;
+  }
+  
+  .card-footer {
+    @apply flex items-center p-6 pt-0;
+  }
+  
+  /* Navigation */
+  .nav-link {
+    @apply flex items-center px-3 py-2 text-sm font-medium rounded-md transition-colors;
+  }
+  
+  .nav-link-active {
+    @apply nav-link bg-primary-100 text-primary-900;
+  }
+  
+  .nav-link-inactive {
+    @apply nav-link text-gray-600 hover:bg-gray-50 hover:text-gray-900;
+  }
+  
+  /* Status badges */
+  .status-badge {
+    @apply inline-flex items-center px-2.5 py-0.5 rounded-full text-xs font-medium;
+  }
+  
+  .status-new {
+    @apply status-badge bg-blue-100 text-blue-800;
+  }
+  
+  .status-qualified {
+    @apply status-badge bg-yellow-100 text-yellow-800;
+  }
+  
+  .status-contacted {
+    @apply status-badge bg-purple-100 text-purple-800;
+  }
+  
+  .status-converted {
+    @apply status-badge bg-green-100 text-green-800;
+  }
+  
+  .status-lost {
+    @apply status-badge bg-red-100 text-red-800;
+  }
+  
+  /* Loading states */
+  .loading-spinner {
+    @apply animate-spin rounded-full h-8 w-8 border-b-2 border-primary-600;
+  }
+  
+  .loading-dots::after {
+    content: '';
+    animation: loading-dots 1.5s infinite;
+  }
+  
+  /* Animations */
+  @keyframes loading-dots {
+    0%, 20% {
+      color: rgba(0, 0, 0, 0);
+      text-shadow:
+        .25em 0 0 rgba(0, 0, 0, 0),
+        .5em 0 0 rgba(0, 0, 0, 0);
+    }
+    40% {
+      color: black;
+      text-shadow:
+        .25em 0 0 rgba(0, 0, 0, 0),
+        .5em 0 0 rgba(0, 0, 0, 0);
+    }
+    60% {
+      text-shadow:
+        .25em 0 0 black,
+        .5em 0 0 rgba(0, 0, 0, 0);
+    }
+    80%, 100% {
+      text-shadow:
+        .25em 0 0 black,
+        .5em 0 0 black;
+    }
+  }
+}
+
+@layer utilities {
+  /* Custom scrollbar */
+  .scrollbar-thin {
+    scrollbar-width: thin;
+    scrollbar-color: rgb(203 213 225) transparent;
+  }
+  
+  .scrollbar-thin::-webkit-scrollbar {
+    width: 8px;
+  }
+  
+  .scrollbar-thin::-webkit-scrollbar-track {
+    background: transparent;
+  }
+  
+  .scrollbar-thin::-webkit-scrollbar-thumb {
+    background-color: rgb(203 213 225);
+    border-radius: 20px;
+  }
+  
+  .scrollbar-thin::-webkit-scrollbar-thumb:hover {
+    background-color: rgb(148 163 184);
+  }
+}
+
+/* CSS Variables for Beautiful Pastel Theming */
+:root {
+  /* Light Theme - Beautiful Pastels */
+  --background: 254 100% 99%;        /* Pure white with subtle warmth */
+  --foreground: 222.2 84% 4.9%;      /* Deep charcoal */
+  --card: 0 0% 100%;                 /* Pure white cards */
+  --card-foreground: 222.2 84% 4.9%; /* Deep charcoal text */
+  --popover: 0 0% 100%;              /* Pure white */
+  --popover-foreground: 222.2 84% 4.9%; /* Deep charcoal */
+  
+  /* Soft Blue-Purple Primary */
+  --primary: 245 83% 61%;            /* Beautiful soft indigo */
+  --primary-foreground: 0 0% 100%;   /* White text on primary */
+  
+  /* Soft Pink Secondary */
+  --secondary: 327 73% 97%;          /* Very light pink */
+  --secondary-foreground: 340 82% 52%; /* Deeper pink text */
+  
+  /* Muted tones */
+  --muted: 220 14% 96%;              /* Soft gray background */
+  --muted-foreground: 215 20% 65%;   /* Medium gray text */
+  
+  /* Soft Lavender Accent */
+  --accent: 270 95% 98%;             /* Very light lavender */
+  --accent-foreground: 271 91% 65%;  /* Purple text */
+  
+  /* Soft Coral Destructive */
+  --destructive: 0 72% 51%;          /* Soft red */
+  --destructive-foreground: 0 0% 100%; /* White text */
+  
+  /* Borders and inputs */
+  --border: 220 13% 91%;             /* Soft gray border */
+  --input: 220 13% 91%;              /* Soft gray input */
+  --ring: 245 83% 61%;               /* Primary color ring */
+  --radius: 0.75rem;                 /* Slightly more rounded */
+}
+
+.dark {
+  /* Dark Theme - Rich but Soft */
+  --background: 222.2 47% 5%;        /* Rich dark blue-gray */
+  --foreground: 210 40% 98%;         /* Soft white */
+  --card: 222.2 47% 8%;              /* Slightly lighter cards */
+  --card-foreground: 210 40% 98%;    /* Soft white text */
+  --popover: 222.2 47% 8%;           /* Card color */
+  --popover-foreground: 210 40% 98%; /* Soft white */
+  
+  /* Bright Purple Primary for dark mode */
+  --primary: 263 70% 70%;            /* Bright soft purple */
+  --primary-foreground: 222.2 47% 5%; /* Dark background on primary */
+  
+  /* Dark Pink Secondary */
+  --secondary: 322 30% 15%;          /* Dark pink background */
+  --secondary-foreground: 327 73% 85%; /* Light pink text */
+  
+  /* Dark Muted */
+  --muted: 217.2 32.6% 17.5%;        /* Medium dark */
+  --muted-foreground: 215 20.2% 65.1%; /* Medium light gray */
+  
+  /* Dark Lavender Accent */
+  --accent: 270 30% 18%;             /* Dark lavender */
+  --accent-foreground: 270 95% 85%;  /* Light lavender text */
+  
+  /* Dark Coral Destructive */
+  --destructive: 0 62.8% 55%;        /* Bright but soft red */
+  --destructive-foreground: 210 40% 98%; /* Soft white */
+  
+  /* Dark borders */
+  --border: 217.2 32.6% 20%;         /* Slightly lighter border */
+  --input: 217.2 32.6% 20%;          /* Input background */
+  --ring: 263 70% 70%;               /* Primary purple ring */
+}

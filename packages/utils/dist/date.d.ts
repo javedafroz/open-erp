@@ -1,0 +1,9 @@
+export declare const formatDate: (date: Date, format?: string) => string;
+export declare const isToday: (date: Date) => boolean;
+export declare const addDays: (date: Date, days: number) => Date;
+export declare const addMonths: (date: Date, months: number) => Date;
+export declare const getDaysDifference: (date1: Date, date2: Date) => number;
+export declare const getStartOfDay: (date: Date) => Date;
+export declare const getEndOfDay: (date: Date) => Date;
+export declare const isWeekend: (date: Date) => boolean;
+//# sourceMappingURL=date.d.ts.map

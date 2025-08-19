@@ -1,0 +1,52 @@
+{
+  "name": "@erp/crm-service",
+  "version": "1.0.0",
+  "description": "CRM service for lead, account, contact and opportunity management",
+  "main": "dist/index.js",
+  "scripts": {
+    "build": "tsc",
+    "dev": "tsx watch src/index.ts",
+    "start": "node dist/index.js",
+    "clean": "rm -rf dist",
+    "lint": "eslint src/**/*.ts",
+    "type-check": "tsc --noEmit",
+    "test": "jest",
+    "test:watch": "jest --watch",
+    "typeorm": "typeorm-ts-node-commonjs",
+    "migration:generate": "typeorm-ts-node-commonjs migration:generate",
+    "migration:run": "typeorm-ts-node-commonjs migration:run",
+    "migration:revert": "typeorm-ts-node-commonjs migration:revert"
+  },
+  "dependencies": {
+    "@elastic/elasticsearch": "^8.11.0",
+    "@erp/shared": "^1.0.0",
+    "@erp/types": "^1.0.0",
+    "@erp/utils": "^1.0.0",
+    "@fastify/cors": "^9.0.0",
+    "@fastify/env": "^4.2.0",
+    "@fastify/helmet": "^11.0.0",
+    "@fastify/rate-limit": "^9.0.0",
+    "@fastify/swagger": "^8.12.0",
+    "@fastify/swagger-ui": "^2.0.0",
+    "amqplib": "^0.10.3",
+    "class-transformer": "^0.5.1",
+    "class-validator": "^0.14.0",
+    "fast-content-type-parse": "^1.1.0",
+    "fastify": "^4.24.0",
+    "ioredis": "^5.3.0",
+    "pg": "^8.11.0",
+    "pino": "^8.16.0",
+    "redis": "^5.8.1",
+    "reflect-metadata": "^0.1.13",
+    "typeorm": "^0.3.17",
+    "uuid": "^9.0.0"
+  },
+  "devDependencies": {
+    "@types/amqplib": "^0.10.0",
+    "@types/jest": "^29.5.0",
+    "@types/pg": "^8.10.0",
+    "@types/uuid": "^9.0.0",
+    "jest": "^29.7.0",
+    "tsx": "^4.0.0"
+  }
+}

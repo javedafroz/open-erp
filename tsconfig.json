@@ -1,0 +1,56 @@
+{
+  "compilerOptions": {
+    "target": "ES2022",
+    "lib": ["ES2022", "DOM", "DOM.Iterable"],
+    "allowJs": true,
+    "skipLibCheck": true,
+    "esModuleInterop": true,
+    "allowSyntheticDefaultImports": true,
+    "strict": true,
+    "forceConsistentCasingInFileNames": true,
+    "module": "ESNext",
+    "moduleResolution": "node",
+    "resolveJsonModule": true,
+    "isolatedModules": true,
+    "noEmit": true,
+    "jsx": "react-jsx",
+    "declaration": true,
+    "declarationMap": true,
+    "sourceMap": true,
+    "outDir": "./dist",
+    "rootDir": ".",
+    "baseUrl": ".",
+    "paths": {
+      "@erp/shared": ["./packages/shared/src"],
+      "@erp/utils": ["./packages/utils/src"],
+      "@erp/types": ["./packages/types/src"]
+    },
+    "typeRoots": ["./node_modules/@types", "./types"],
+    "types": ["node", "jest"]
+  },
+  "include": [
+    "packages/**/*",
+    "services/**/*",
+    "apps/**/*",
+    "types/**/*"
+  ],
+  "exclude": [
+    "node_modules",
+    "dist",
+    "build",
+    "coverage",
+    "**/*.test.ts",
+    "**/*.spec.ts"
+  ],
+  "references": [
+    { "path": "./packages/shared" },
+    { "path": "./packages/utils" },
+    { "path": "./packages/types" },
+    { "path": "./services/auth-service" },
+    { "path": "./services/user-service" },
+    { "path": "./services/crm-service" },
+    { "path": "./services/sales-service" },
+    { "path": "./apps/web-app" },
+    { "path": "./apps/admin-app" }
+  ]
+}

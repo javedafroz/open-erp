@@ -1,0 +1,10 @@
+export declare const capitalize: (str: string) => string;
+export declare const camelCase: (str: string) => string;
+export declare const kebabCase: (str: string) => string;
+export declare const snakeCase: (str: string) => string;
+export declare const truncate: (str: string, maxLength: number, suffix?: string) => string;
+export declare const slugify: (str: string) => string;
+export declare const escapeHtml: (str: string) => string;
+export declare const unescapeHtml: (str: string) => string;
+export declare const removeAccents: (str: string) => string;
+//# sourceMappingURL=string.d.ts.map

@@ -1,0 +1,43 @@
+# Auth Service Dockerfile
+FROM node:20-alpine
+
+# Install curl for health checks only
+RUN apk add --no-cache curl || echo "Warning: Could not install curl"
+
+# Set working directory
+WORKDIR /app
+
+# Copy package files and config
+COPY package*.json ./
+COPY tsconfig.json ./
+COPY packages/shared/package*.json ./packages/shared/
+COPY packages/utils/package*.json ./packages/utils/
+COPY packages/types/package*.json ./packages/types/
+COPY services/auth-service/package*.json ./services/auth-service/
+
+# Install all dependencies
+RUN npm ci
+
+# Copy shared packages source
+COPY packages/ ./packages/
+
+# Build shared packages  
+RUN npm run build --workspace=packages/shared --if-present
+RUN npm run build --workspace=packages/utils --if-present
+RUN npm run build --workspace=packages/types --if-present
+
+# Copy auth service source
+COPY services/auth-service/ ./services/auth-service/
+
+# Set working directory to auth service
+WORKDIR /app/services/auth-service
+
+# Expose port
+EXPOSE 3001
+
+# Health check
+HEALTHCHECK --interval=30s --timeout=10s --start-period=60s --retries=3 \
+  CMD curl -f http://localhost:3001/health || exit 1
+
+# Start the application
+CMD ["npm", "run", "dev"]
